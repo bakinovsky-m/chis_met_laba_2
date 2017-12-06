@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 def f(x, y):
 	return x**2 - 2*(y**2) - x*y + 2*x - y + 1
 
@@ -26,6 +28,10 @@ qk = 1
 pk = 1
 
 count = 0
+
+xk_arr = []
+yk_arr = []
+
 while abs(max(qk, pk)) > eps and count < 10:
 	count += 1
 
@@ -34,11 +40,13 @@ while abs(max(qk, pk)) > eps and count < 10:
 	pk = (f(xk, yk) - qk*f_y(xk, yk))/f_x(xk, yk)
 	xk = xk - pk
 	yk = yk - qk
-	# print("qk: {}".format(qk))
-	print("xk: {}".format(xk))
-	# print("pk: {}".format(pk))
-	print("yk: {}".format(yk))
+
+	xk_arr.append(xk)
+	yk_arr.append(yk)
 
 print("count: {}".format(count))
 print("xk: {}".format(xk))
 print("yk: {}".format(yk))
+
+plt.plot(xk_arr, yk_arr, '-o')
+plt.show()
