@@ -32,7 +32,7 @@ count = 0
 xk_arr = []
 yk_arr = []
 
-while abs(max(qk, pk)) > eps and count < 10:
+while abs(max(qk, pk)) > eps:
 	count += 1
 
 	x_ = xk - (f(xk, yk)/f_x(xk, yk))
