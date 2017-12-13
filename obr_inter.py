@@ -1,6 +1,7 @@
 #!/bin/python3
 
-# f(2) = 0
+import matplotlib.pyplot as plt
+
 def f(x):
 	return 1/(x-1) - 1
 
@@ -11,15 +12,17 @@ x1 = 10
 
 count = 0
 
-# while abs(x0 - x1) > eps and count < 10:
+x_arr = []
+
 while f(x0)*f(x1) < 0 and count < 10:
-	print("count: {}".format(count))
-	print("x0: {}".format(x0))
-	print("x1: {}".format(x1))
 	x2 = x1 - (f(x1) * (x1 - x0))/(f(x1)-f(x0))
-	print("x2: {}".format(x2))
-	print()
-	# x0 = x1
 	x1 = x2
 
 	count += 1
+
+	x_arr.append(x1)
+
+print("x: {}".format(x1))
+
+plt.plot(x_arr, '-o')
+plt.show()
